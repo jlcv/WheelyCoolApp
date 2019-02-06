@@ -15,16 +15,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
         setupInitialViewController()
+        setupNavigationBar()
         return true
     }
     
     private func setupInitialViewController() {
-        let initialNavigationController = UINavigationController.init(rootViewController: InputViewController())
+        let initialNavigationController = UINavigationController.init(rootViewController: SetupTableViewController())
         window = UIWindow(frame:UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         window?.rootViewController = initialNavigationController
+    }
+    
+    private func setupNavigationBar() {
+        UINavigationBar.appearance().barTintColor = UIColor.MaterialColor.green50
+        UINavigationBar.appearance().tintColor = UIColor.black
+        UINavigationBar.appearance().isOpaque = true
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.black]
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

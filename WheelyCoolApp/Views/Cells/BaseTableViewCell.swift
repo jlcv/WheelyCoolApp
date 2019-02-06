@@ -8,6 +8,6 @@
 
 import UIKit
 
-class BaseCell<U>: UITableViewCell {
+class BaseTableViewCell<U>: UITableViewCell {
     var item: U!
 }

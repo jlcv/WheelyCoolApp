@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BaseTableViewController<T : BaseCell<U>, U> : UITableViewController {
+class BaseTableViewController<T : BaseTableViewCell<U>, U> : UITableViewController {
     
     let cellId = "cellId"
     var items = [U]()
@@ -25,7 +25,7 @@ class BaseTableViewController<T : BaseCell<U>, U> : UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! BaseCell<U>
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! BaseTableViewCell<U>
         cell.item = items[indexPath.row]
         return cell
     }

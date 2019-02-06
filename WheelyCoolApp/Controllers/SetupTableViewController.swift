@@ -8,83 +8,82 @@
 
 import UIKit
 
-class SetupTableViewController: UITableViewController {
+class SetupTableViewController: BaseTableViewController<WheelOptionTableViewCell, WheelOption> {
+    
+    //MARK: - UIComponents
+    lazy var continueButton: ActionButton = {
+        let continueButton = ActionButton()
+        continueButton.setTitle(NSLocalizedString("Continue", comment: ""), for: .normal)
+        continueButton.addTarget(self, action: #selector(continueTapped), for: .touchUpInside)
+        return continueButton
+    }()
+    
+    lazy var addButton: UIBarButtonItem = {
+        let addButton = UIBarButtonItem(
+            title: NSLocalizedString("Add", comment: ""),
+            style: .plain,
+            target: self,
+            action: #selector(addTapped(sender:)))
+        return addButton
+    }()
 
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        self.prepareData()
+        self.prepareInterface()
     }
-
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+    
+    // MARK: - Data
+    private func prepareData() {
+        let optionA = WheelOption.init(name: "Pizza")
+        let optionB = WheelOption.init(name: "Burger")
+        let optionC = WheelOption.init(name: "Pasta")
+        items = [optionA, optionB, optionC]
     }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+    
+    // MARK: - Interface
+    private func prepareInterface() {
+        self.title = Constants.Titles.SetupTableViewController
+        self.tableView.rowHeight = UITableView.automaticDimension
+        self.tableView.estimatedRowHeight = 60.0;
+        self.tableView.separatorStyle = .none
+        self.addComponents()
+        self.setupConstraints()
     }
-
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
+    
+    private func addComponents() {
+        self.navigationItem.rightBarButtonItem = addButton
+        view.addSubview(continueButton)
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    private func setupConstraints() {
+        continueButton.setAnchors(
+            top: nil,
+            left: view.safeLeftAnchor,
+            right: view.safeRightAnchor,
+            bottom: view.safeBottomAnchor,
+            paddingTop: 0,
+            paddingLeft: 32,
+            paddingRight: -32,
+            paddingBottom: -32,
+            width: 0,
+            height: 60)
+        view.layoutSubviews()
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    
+    //MARK: - Action
+    @objc private func addTapped(sender: UIBarButtonItem!) {
+        
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+    
+    @objc private func continueTapped(sender: UIButton!) {
+        let spinWheelViewController = SpinWheelViewController()
+        self.navigationController?.pushViewController(spinWheelViewController, animated: true)
     }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
+    
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
     }
-    */
-
 }

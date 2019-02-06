@@ -1,0 +1,14 @@
+/* 
+  Localizable.strings
+  WheelyCoolApp
+
+  Created by jChavez17 on 2/5/19.
+  Copyright © 2019 jChavez17. All rights reserved.
+*/
+
+"Continue" = "Continue";
+"Accept" = "Accept";
+"Cancel" = "Cancel";
+"Setup" = "Setup";
+"Spin the wheel!" = "Spin the wheel!";
+"Add" = "Add";

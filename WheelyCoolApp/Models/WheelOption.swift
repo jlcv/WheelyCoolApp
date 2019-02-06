@@ -6,8 +6,12 @@
 //  Copyright © 2019 jChavez17. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
-class WheelOption: NSObject {
-
+struct WheelOption {
+    var name: String
+    
+    init (name: String) {
+        self.name = name
+    }
 }
