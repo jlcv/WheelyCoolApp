@@ -25,7 +25,7 @@ extension UIView {
         }
     }
     
-    func setAnchors(width: CGFloat, height: CGFloat){
+    func setAnchors(width: CGFloat, height: CGFloat) {
         self.setAnchors(top: nil,
                         left: nil,
                         right: nil,

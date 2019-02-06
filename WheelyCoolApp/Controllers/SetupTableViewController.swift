@@ -11,14 +11,14 @@ import UIKit
 class SetupTableViewController: BaseTableViewController<WheelOptionTableViewCell, WheelOption> {
     
     //MARK: - UIComponents
-    lazy var continueButton: ActionButton = {
+    var continueButton: ActionButton = {
         let continueButton = ActionButton()
         continueButton.setTitle(NSLocalizedString("Continue", comment: ""), for: .normal)
         continueButton.addTarget(self, action: #selector(continueTapped), for: .touchUpInside)
         return continueButton
     }()
     
-    lazy var addButton: UIBarButtonItem = {
+    var addButton: UIBarButtonItem = {
         let addButton = UIBarButtonItem(
             title: NSLocalizedString("Add", comment: ""),
             style: .plain,
@@ -39,7 +39,8 @@ class SetupTableViewController: BaseTableViewController<WheelOptionTableViewCell
         let optionA = WheelOption.init(name: "Pizza")
         let optionB = WheelOption.init(name: "Burger")
         let optionC = WheelOption.init(name: "Pasta")
-        items = [optionA, optionB, optionC]
+        let optionD = WheelOption.init(name: "Tacos")
+        items = [optionA, optionB, optionC, optionD]
     }
     
     // MARK: - Interface
@@ -72,13 +73,13 @@ class SetupTableViewController: BaseTableViewController<WheelOptionTableViewCell
         view.layoutSubviews()
     }
     
-    //MARK: - Action
+    //MARK: - Actions
     @objc private func addTapped(sender: UIBarButtonItem!) {
         
     }
     
     @objc private func continueTapped(sender: UIButton!) {
-        let spinWheelViewController = SpinWheelViewController()
+        let spinWheelViewController = SpinWheelViewController.init(items: items)
         self.navigationController?.pushViewController(spinWheelViewController, animated: true)
     }
     
