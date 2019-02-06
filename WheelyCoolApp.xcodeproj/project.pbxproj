@@ -14,6 +14,14 @@
 		8E6F3B6B220A25B8001D0C03 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E6F3B69220A25B8001D0C03 /* LaunchScreen.storyboard */; };
 		8E6F3B76220A25B8001D0C03 /* WheelyCoolAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6F3B75220A25B8001D0C03 /* WheelyCoolAppTests.swift */; };
 		8E6F3B81220A25B8001D0C03 /* WheelyCoolAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6F3B80220A25B8001D0C03 /* WheelyCoolAppUITests.swift */; };
+		8E6F3B93220A80E1001D0C03 /* SpinWheelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6F3B92220A80E1001D0C03 /* SpinWheelViewController.swift */; };
+		8E6F3B95220A8114001D0C03 /* WheelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6F3B94220A8114001D0C03 /* WheelView.swift */; };
+		8E6F3B97220A8159001D0C03 /* WheelOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6F3B96220A8159001D0C03 /* WheelOption.swift */; };
+		8E6F3B99220A81E8001D0C03 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6F3B98220A81E8001D0C03 /* BaseTableViewController.swift */; };
+		8E6F3B9C220A825E001D0C03 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6F3B9B220A825E001D0C03 /* BaseTableViewCell.swift */; };
+		8E6F3B9E220A8299001D0C03 /* WheelOptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6F3B9D220A8299001D0C03 /* WheelOptionTableViewCell.swift */; };
+		8E6F3BA0220A83BB001D0C03 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6F3B9F220A83BB001D0C03 /* ActionButton.swift */; };
+		8E6F3BA2220A841E001D0C03 /* SetupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6F3BA1220A841E001D0C03 /* SetupTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +55,14 @@
 		8E6F3B7C220A25B8001D0C03 /* WheelyCoolAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WheelyCoolAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E6F3B80220A25B8001D0C03 /* WheelyCoolAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelyCoolAppUITests.swift; sourceTree = "<group>"; };
 		8E6F3B82220A25B8001D0C03 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8E6F3B92220A80E1001D0C03 /* SpinWheelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinWheelViewController.swift; sourceTree = "<group>"; };
+		8E6F3B94220A8114001D0C03 /* WheelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelView.swift; sourceTree = "<group>"; };
+		8E6F3B96220A8159001D0C03 /* WheelOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelOption.swift; sourceTree = "<group>"; };
+		8E6F3B98220A81E8001D0C03 /* BaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
+		8E6F3B9B220A825E001D0C03 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
+		8E6F3B9D220A8299001D0C03 /* WheelOptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelOptionTableViewCell.swift; sourceTree = "<group>"; };
+		8E6F3B9F220A83BB001D0C03 /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
+		8E6F3BA1220A841E001D0C03 /* SetupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,12 +113,10 @@
 		8E6F3B5C220A25B6001D0C03 /* WheelyCoolApp */ = {
 			isa = PBXGroup;
 			children = (
-				8E6F3B5D220A25B6001D0C03 /* AppDelegate.swift */,
-				8E6F3B5F220A25B6001D0C03 /* InputViewController.swift */,
-				8E6F3B67220A25B8001D0C03 /* Assets.xcassets */,
-				8E6F3B69220A25B8001D0C03 /* LaunchScreen.storyboard */,
-				8E6F3B6C220A25B8001D0C03 /* Info.plist */,
-				8E6F3B64220A25B6001D0C03 /* WheelyCoolApp.xcdatamodeld */,
+				8E6F3B91220A8073001D0C03 /* SupportFiles */,
+				8E6F3B90220A806A001D0C03 /* Models */,
+				8E6F3B8F220A8061001D0C03 /* Views */,
+				8E6F3B8E220A8058001D0C03 /* Controllers */,
 			);
 			path = WheelyCoolApp;
 			sourceTree = "<group>";
@@ -123,6 +137,56 @@
 				8E6F3B82220A25B8001D0C03 /* Info.plist */,
 			);
 			path = WheelyCoolAppUITests;
+			sourceTree = "<group>";
+		};
+		8E6F3B8E220A8058001D0C03 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				8E6F3B98220A81E8001D0C03 /* BaseTableViewController.swift */,
+				8E6F3BA1220A841E001D0C03 /* SetupTableViewController.swift */,
+				8E6F3B5F220A25B6001D0C03 /* InputViewController.swift */,
+				8E6F3B92220A80E1001D0C03 /* SpinWheelViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		8E6F3B8F220A8061001D0C03 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8E6F3B9A220A821F001D0C03 /* Cells */,
+				8E6F3B94220A8114001D0C03 /* WheelView.swift */,
+				8E6F3B9F220A83BB001D0C03 /* ActionButton.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		8E6F3B90220A806A001D0C03 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8E6F3B96220A8159001D0C03 /* WheelOption.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8E6F3B91220A8073001D0C03 /* SupportFiles */ = {
+			isa = PBXGroup;
+			children = (
+				8E6F3B64220A25B6001D0C03 /* WheelyCoolApp.xcdatamodeld */,
+				8E6F3B5D220A25B6001D0C03 /* AppDelegate.swift */,
+				8E6F3B67220A25B8001D0C03 /* Assets.xcassets */,
+				8E6F3B69220A25B8001D0C03 /* LaunchScreen.storyboard */,
+				8E6F3B6C220A25B8001D0C03 /* Info.plist */,
+			);
+			path = SupportFiles;
+			sourceTree = "<group>";
+		};
+		8E6F3B9A220A821F001D0C03 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				8E6F3B9B220A825E001D0C03 /* BaseTableViewCell.swift */,
+				8E6F3B9D220A8299001D0C03 /* WheelOptionTableViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -255,9 +319,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E6F3B9C220A825E001D0C03 /* BaseTableViewCell.swift in Sources */,
 				8E6F3B60220A25B6001D0C03 /* InputViewController.swift in Sources */,
 				8E6F3B66220A25B6001D0C03 /* WheelyCoolApp.xcdatamodeld in Sources */,
+				8E6F3B95220A8114001D0C03 /* WheelView.swift in Sources */,
+				8E6F3B9E220A8299001D0C03 /* WheelOptionTableViewCell.swift in Sources */,
+				8E6F3B99220A81E8001D0C03 /* BaseTableViewController.swift in Sources */,
+				8E6F3B93220A80E1001D0C03 /* SpinWheelViewController.swift in Sources */,
+				8E6F3B97220A8159001D0C03 /* WheelOption.swift in Sources */,
 				8E6F3B5E220A25B6001D0C03 /* AppDelegate.swift in Sources */,
+				8E6F3BA0220A83BB001D0C03 /* ActionButton.swift in Sources */,
+				8E6F3BA2220A841E001D0C03 /* SetupTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
