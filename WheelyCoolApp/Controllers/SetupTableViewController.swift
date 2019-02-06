@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class SetupTableViewController: BaseTableViewController<WheelOptionTableViewCell, WheelOption> {
     
@@ -18,12 +19,12 @@ class SetupTableViewController: BaseTableViewController<WheelOptionTableViewCell
         return continueButton
     }()
     
-    var addButton: UIBarButtonItem = {
+    lazy var addButton: UIBarButtonItem = {
         let addButton = UIBarButtonItem(
             title: NSLocalizedString("Add", comment: ""),
             style: .plain,
             target: self,
-            action: #selector(addTapped(sender:)))
+            action: #selector(self.addTapped(sender:)))
         return addButton
     }()
 
@@ -36,25 +37,73 @@ class SetupTableViewController: BaseTableViewController<WheelOptionTableViewCell
     
     // MARK: - Data
     private func prepareData() {
-        let optionA = WheelOption.init(name: "Pizza")
-        let optionB = WheelOption.init(name: "Burger")
-        let optionC = WheelOption.init(name: "Pasta")
-        let optionD = WheelOption.init(name: "Tacos")
-        items = [optionA, optionB, optionC, optionD]
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "WheelOptions")
+        request.returnsObjectsAsFaults = false
+        do {
+            let result = try context.fetch(request)
+            for data in result as! [NSManagedObject] {
+                let wheelOptionName = data.value(forKey: "name") as! String
+                items.append(WheelOption.init(name:wheelOptionName))
+            }
+        } catch {
+            print("Fetch failed")
+        }
+    }
+    
+    private func saveWheelOption(wheelOption: WheelOption) -> Bool {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let entity = NSEntityDescription.entity(forEntityName: "WheelOptions", in: context)
+        let newWheelOption = NSManagedObject(entity: entity!, insertInto: context)
+        newWheelOption.setValue(wheelOption.name, forKey: "name")
+        do {
+            try context.save()
+        } catch {
+            print("Failed saving")
+            return false
+        }
+        return true
+    }
+    
+    private func deleteWheelOption(wheelOption: WheelOption) -> Bool {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "WheelOptions")
+        request.returnsObjectsAsFaults = false
+        request.predicate = NSPredicate.init(format: "name == '\(wheelOption.name)'")
+        do {
+            let result = try context.fetch(request)
+            for data in result as! [NSManagedObject] {
+                context.delete(data)
+            }
+        } catch {
+            print("Fetch failed")
+            return false
+        }
+        
+        do {
+            try context.save()
+        } catch {
+            print("Failed deleting")
+            return false
+        }
+        return true
     }
     
     // MARK: - Interface
     private func prepareInterface() {
-        self.title = Constants.Titles.SetupTableViewController
-        self.tableView.rowHeight = UITableView.automaticDimension
-        self.tableView.estimatedRowHeight = 60.0;
-        self.tableView.separatorStyle = .none
-        self.addComponents()
-        self.setupConstraints()
+        title = Constants.Titles.SetupTableViewController
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 60.0
+        tableView.tableFooterView = UIView()
+        addComponents()
+        setupConstraints()
     }
     
     private func addComponents() {
-        self.navigationItem.rightBarButtonItem = addButton
+        navigationItem.rightBarButtonItem = addButton
         view.addSubview(continueButton)
     }
     
@@ -73,18 +122,36 @@ class SetupTableViewController: BaseTableViewController<WheelOptionTableViewCell
         view.layoutSubviews()
     }
     
+    //MARK: - UITableViewEdit
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            if (deleteWheelOption(wheelOption: items[indexPath.row])) {
+                items.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
+        }
+    }
+    
     //MARK: - Actions
-    @objc private func addTapped(sender: UIBarButtonItem!) {
-        
+    @objc private func addTapped(sender: UITabBarItem!) {
+        let inputViewController = InputViewController()
+        inputViewController.modalPresentationStyle = .overCurrentContext
+        inputViewController.modalTransitionStyle = .crossDissolve
+        inputViewController.delegate = self
+        navigationController?.present(inputViewController, animated: true, completion: nil)
     }
     
     @objc private func continueTapped(sender: UIButton!) {
         let spinWheelViewController = SpinWheelViewController.init(items: items)
-        self.navigationController?.pushViewController(spinWheelViewController, animated: true)
+        navigationController?.pushViewController(spinWheelViewController, animated: true)
     }
-    
-    // MARK: - Navigation
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+}
+
+extension SetupTableViewController: AddWheelOptionDelegate {
+    func didAddWheelItem(wheelOption: WheelOption) {
+        if (saveWheelOption(wheelOption: wheelOption)) {
+            items.append(wheelOption)
+            tableView.reloadData()
+        }
     }
 }

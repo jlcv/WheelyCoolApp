@@ -12,7 +12,6 @@ import QuartzCore
 class WheelView: UIView {
     
     var items: [WheelOption] = []
-    var colors: [UIColor] = [UIColor.red, UIColor.blue, UIColor.green, UIColor.purple, UIColor.gray]
     
     lazy var rotation: CABasicAnimation = {
         let rotation = CABasicAnimation(keyPath: "transform.rotation")
@@ -31,6 +30,11 @@ class WheelView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - Data
+    private func getAngleSize() -> Float{
+        return (2.0 * Float.pi / Float(items.count))
+    }
+    
     //MARK: - Interface
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -41,8 +45,6 @@ class WheelView: UIView {
     }
     
     private func addItemLabels() {
-        let angleSize = (2.0 * Float.pi / Float(items.count))
-        
         for (index, item) in items.enumerated() {
             let itemLabel = UILabel.init(frame: CGRect.init(x: frame.size.width, y: frame.size.height, width: (frame.size.width / 2.0), height: 40))
             itemLabel.text = item.name
@@ -50,7 +52,7 @@ class WheelView: UIView {
             itemLabel.layer.anchorPoint = CGPoint.init(x: 0.0, y: 0.5)
             itemLabel.layer.position = CGPoint(x: frame.size.width / 2.0,
                                                y: frame.size.height / 2.0)
-            itemLabel.transform = CGAffineTransform(rotationAngle: CGFloat(angleSize * Float(index)))
+            itemLabel.transform = CGAffineTransform(rotationAngle: CGFloat(getAngleSize() * Float(index)))
             itemLabel.tag = index
             addSubview(itemLabel)
         }
@@ -58,8 +60,11 @@ class WheelView: UIView {
     
     //MARK: - Public Methods
     public func rotate() {
-        let randomNumber = Float.random(in: 0..<1)
-        rotation.toValue = NSNumber(value: Float.pi * 2 * 20 * randomNumber)
+        guard items.count > 0 else {
+            return
+        }
+        let randomNumber = Int.random(in: 0..<items.count)
+        rotation.toValue = NSNumber(value: (Float.pi * 2 * 10 + getAngleSize() * Float(randomNumber)))
         rotation.duration = 5
         let timingFunction = CAMediaTimingFunction(controlPoints: 0.2, 0.4, 0.7, 0.9)
         rotation.timingFunction = timingFunction
