@@ -49,6 +49,7 @@ class SpinWheelViewController: UIViewController {
     //MARK: - Interface
     private func prepareInterface() {
         view.backgroundColor = .white
+        title = Constants.Titles.WheelViewController
         addComponents()
         setupConstraints()
     }
@@ -93,6 +94,6 @@ class SpinWheelViewController: UIViewController {
     
     //MARK: - Actions
     @objc func spinTapped() {
-        wheelView.rotate()
+        wheelView.rotate(itemCount: wheelOptions.count)
     }
 }

@@ -27,6 +27,7 @@
 		8E6F3BAC220A941D001D0C03 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8E6F3BAE220A941D001D0C03 /* Localizable.strings */; };
 		8E6F3BB1220AB721001D0C03 /* WheelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6F3BB0220AB721001D0C03 /* WheelView.swift */; };
 		8E6F3BB3220AE07B001D0C03 /* TriangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6F3BB2220AE07B001D0C03 /* TriangleView.swift */; };
+		8E6F3BB5220BA8C1001D0C03 /* CircleCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6F3BB4220BA8C1001D0C03 /* CircleCalculator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,7 @@
 		8E6F3BAF220A943C001D0C03 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		8E6F3BB0220AB721001D0C03 /* WheelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelView.swift; sourceTree = "<group>"; };
 		8E6F3BB2220AE07B001D0C03 /* TriangleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriangleView.swift; sourceTree = "<group>"; };
+		8E6F3BB4220BA8C1001D0C03 /* CircleCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleCalculator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +193,7 @@
 				8E6F3B5D220A25B6001D0C03 /* AppDelegate.swift */,
 				8E6F3B64220A25B6001D0C03 /* WheelyCoolApp.xcdatamodeld */,
 				8E6F3BAE220A941D001D0C03 /* Localizable.strings */,
+				8E6F3BB4220BA8C1001D0C03 /* CircleCalculator.swift */,
 			);
 			path = SupportFiles;
 			sourceTree = "<group>";
@@ -358,6 +361,7 @@
 				8E6F3BB3220AE07B001D0C03 /* TriangleView.swift in Sources */,
 				8E6F3B5E220A25B6001D0C03 /* AppDelegate.swift in Sources */,
 				8E6F3BA0220A83BB001D0C03 /* ActionButton.swift in Sources */,
+				8E6F3BB5220BA8C1001D0C03 /* CircleCalculator.swift in Sources */,
 				8E6F3BA2220A841E001D0C03 /* SetupTableViewController.swift in Sources */,
 				8E6F3BA4220A8812001D0C03 /* Constants.swift in Sources */,
 			);

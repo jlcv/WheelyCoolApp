@@ -11,6 +11,6 @@ import Foundation
 struct Constants {
     struct Titles {
         static let SetupTableViewController = NSLocalizedString("Setup", comment: "")
-        static let WheelViewController = NSLocalizedString("Spin the wheel!", comment: "")
+        static let WheelViewController = NSLocalizedString("Spin", comment: "")
     }
 }
