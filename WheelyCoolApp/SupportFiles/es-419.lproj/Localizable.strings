@@ -15,4 +15,6 @@
 "Add Item" = "Agrega un elemento";
 "Name" = "Nombre";
 "Alert" = "Alerta";
+"Please add a valid name." = "Please add a valid name.";
+"Item limit reached." = "Se ha llegado al limite de elementos.";
 "Spin" = "Spin";

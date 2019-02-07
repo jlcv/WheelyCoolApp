@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class SpinWheelViewController: UIViewController {
     var wheelOptions = [WheelOption]()
@@ -95,5 +96,6 @@ class SpinWheelViewController: UIViewController {
     //MARK: - Actions
     @objc func spinTapped() {
         wheelView.rotate(itemCount: wheelOptions.count)
+        AudioServicesPlayAlertSound(SystemSoundID(1322))
     }
 }

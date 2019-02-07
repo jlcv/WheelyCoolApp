@@ -138,7 +138,7 @@ class InputViewController: UIViewController {
             delegate?.didAddWheelItem(wheelOption: WheelOption.init(name: wheelOptionName))
             dismiss(animated: true, completion: nil)
         } else {
-            let alert = UIAlertController(title: NSLocalizedString("Alert", comment: ""), message: "Please add a valid name.", preferredStyle: UIAlertController.Style.alert)
+            let alert = UIAlertController(title: NSLocalizedString("Alert", comment: ""), message: NSLocalizedString("Please add a valid name.", comment: ""), preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: NSLocalizedString("Accept", comment: ""), style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
@@ -150,5 +150,10 @@ extension InputViewController: UITextFieldDelegate {
         guard let text = textField.text else { return true }
         let count = text.count + string.count - range.length
         return count <= 10
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }

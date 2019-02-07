@@ -15,4 +15,6 @@
 "Add item" = "Add item";
 "Name" = "Name";
 "Alert" = "Alert";
+"Please add a valid name." = "Please add a valid name.";
+"Reached item limit." = "Reached item limit.";
 "Spin" = "Spin";

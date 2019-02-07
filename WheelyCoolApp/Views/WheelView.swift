@@ -12,6 +12,7 @@ import QuartzCore
 class WheelView: UIView {
     
     var items: [WheelOption] = []
+    var colors = [UIColor.red, UIColor.blue, UIColor.green, UIColor.yellow, UIColor.orange, UIColor.purple, UIColor.magenta, UIColor.white, UIColor.brown, UIColor.gray, UIColor.lightGray, UIColor.darkGray]
     
     lazy var rotation: CABasicAnimation = {
         let rotation = CABasicAnimation(keyPath: "transform.rotation")
@@ -28,6 +29,24 @@ class WheelView: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
+        for (index, _) in items.enumerated() {
+            let angleSize = CircleCalculator.getAngleSize(itemCount: items.count)
+            let bezierPath = UIBezierPath.init()
+            bezierPath.addArc(
+                withCenter: CGPoint.init(x: frame.size.width / 2.0, y: frame.size.height / 2.0),
+                radius: bounds.width / 4.0,
+                startAngle: (CGFloat(Float(index) * angleSize) - CGFloat((angleSize / 2.0))),
+                endAngle: CGFloat((Float(index) * angleSize) + angleSize - (angleSize / 2.0)),
+                clockwise: true
+            )
+            bezierPath.lineWidth = bounds.width / 2.0
+            colors[index].setStroke()
+            bezierPath.stroke()
+        }
     }
     
     //MARK: - Interface

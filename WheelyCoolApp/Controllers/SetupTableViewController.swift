@@ -12,14 +12,14 @@ import CoreData
 class SetupTableViewController: BaseTableViewController<WheelOptionTableViewCell, WheelOption> {
     
     //MARK: - UIComponents
-    var continueButton: ActionButton = {
+    private var continueButton: ActionButton = {
         let continueButton = ActionButton()
         continueButton.setTitle(NSLocalizedString("Continue", comment: ""), for: .normal)
         continueButton.addTarget(self, action: #selector(continueTapped), for: .touchUpInside)
         return continueButton
     }()
     
-    lazy var addButton: UIBarButtonItem = {
+    private lazy var addButton: UIBarButtonItem = {
         let addButton = UIBarButtonItem(
             title: NSLocalizedString("Add", comment: ""),
             style: .plain,
@@ -98,6 +98,7 @@ class SetupTableViewController: BaseTableViewController<WheelOptionTableViewCell
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 60.0
         tableView.tableFooterView = UIView()
+        self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 120, right: 0)
         addComponents()
         setupConstraints()
     }
@@ -134,6 +135,12 @@ class SetupTableViewController: BaseTableViewController<WheelOptionTableViewCell
     
     //MARK: - Actions
     @objc private func addTapped(sender: UITabBarItem!) {
+        if (items.count > 11) {
+            let alert = UIAlertController(title: NSLocalizedString("Alert", comment: ""), message: NSLocalizedString("Reached item limit.", comment: ""), preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Accept", comment: ""), style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
         let inputViewController = InputViewController()
         inputViewController.modalPresentationStyle = .overCurrentContext
         inputViewController.modalTransitionStyle = .crossDissolve
